@@ -4,49 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wesit Solution | Premium Software & IT Security</title>
+    <!-- Tailwind CSS v4 CDN -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
-<body class="bg-slate-900 text-slate-100 font-sans">
+<body class="bg-slate-900 text-slate-100 font-sans selection:bg-cyan-500 selection:text-slate-900">
 
+    <!-- Navigation -->
     <nav class="container mx-auto p-6 flex justify-between items-center border-b border-slate-800">
         <a href="#top" class="flex items-center text-cyan-400 font-bold tracking-wider">
-            <img src="logo.png" alt="Wesit Solution logo" class="h-14 w-auto rounded-md object-contain">
+            <img src="logo.png" alt="Wesit Solution logo" class="h-14 w-auto rounded-md object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <span class="hidden text-2xl font-bold tracking-wider text-cyan-400">SECURE<span class="text-white">DEV</span></span>
         </a>
         <div class="space-x-6">
             <a href="#services" class="hover:text-cyan-400 transition">Services</a>
-            <a href="#about" class="hover:text-cyan-400 transition">Expertise</a>
+            <a href="#booking" class="hover:text-cyan-400 transition">Book Consultation</a>
             <a href="#contact" class="bg-cyan-500 hover:bg-cyan-600 text-slate-900 px-4 py-2 rounded font-semibold transition">Get a Quote</a>
         </div>
     </nav>
 
+    <!-- Hero Section -->
     <header class="container mx-auto px-6 py-24 text-center max-w-4xl">
-        <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight mb-6">
+        <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight mb-6 leading-tight">
             Building Bulletproof Software. <br>
             <span class="text-cyan-400">Securing Your Digital Assets.</span>
         </h1>
-        <p class="text-xl text-slate-400 mb-10">
+        <p class="text-xl text-slate-400 mb-10 max-w-2xl mx-auto">
             Enterprise-grade software development fused with rigorous cybersecurity protocols. We build applications that scale and protect them from day one.
         </p>
-        <div class="space-x-4">
-            <a href="#contact" class="bg-cyan-500 hover:bg-cyan-600 text-slate-900 px-8 py-4 rounded-lg font-bold text-lg inline-block transition shadow-lg shadow-cyan-500/20">Book a Security Audit</a>
-            <a href="#services" class="border border-slate-700 hover:border-cyan-400 px-8 py-4 rounded-lg font-bold text-lg inline-block transition">Explore Services</a>
+        <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+            <a href="#booking" class="w-full sm:w-auto bg-cyan-500 hover:bg-cyan-600 text-slate-900 px-8 py-4 rounded-lg font-bold text-lg inline-block transition shadow-lg shadow-cyan-500/20">Book a Security Audit</a>
+            <a href="#services" class="w-full sm:w-auto border border-slate-700 hover:border-cyan-400 px-8 py-4 rounded-lg font-bold text-lg inline-block transition">Explore Services</a>
         </div>
     </header>
 
-    <section id="services" class="bg-slate-950 py-20">
+    <!-- Services Section -->
+    <section id="services" class="bg-slate-950 py-20 border-y border-slate-800">
         <div class="container mx-auto px-6">
             <h2 class="text-3xl font-bold text-center mb-12">Our Specialized Services</h2>
             <div class="grid md:grid-cols-3 gap-8">
+                <!-- Service 1 -->
                 <div class="bg-slate-900 p-8 rounded-xl border border-slate-800 hover:border-cyan-500/50 transition">
                     <div class="text-cyan-400 text-3xl mb-4">💻</div>
                     <h3 class="text-xl font-bold mb-3">Custom Software Development</h3>
                     <p class="text-slate-400">Scalable, high-performance web and mobile applications tailored to your business logic.</p>
                 </div>
+                <!-- Service 2 -->
                 <div class="bg-slate-900 p-8 rounded-xl border border-slate-800 hover:border-cyan-500/50 transition">
                     <div class="text-cyan-400 text-3xl mb-4">🛡️</div>
                     <h3 class="text-xl font-bold mb-3">Cybersecurity & Auditing</h3>
                     <p class="text-slate-400">Penetration testing, vulnerability assessments, and compliance implementation to lock down your code.</p>
                 </div>
+                <!-- Service 3 -->
                 <div class="bg-slate-900 p-8 rounded-xl border border-slate-800 hover:border-cyan-500/50 transition">
                     <div class="text-cyan-400 text-3xl mb-4">☁️</div>
                     <h3 class="text-xl font-bold mb-3">IT Infrastructure & DevOps</h3>
@@ -56,7 +64,127 @@
         </div>
     </section>
 
-    <section id="contact" class="container mx-auto px-6 py-20 max-w-xl text-center">
+    <!-- Interactive Custom Booking Calendar Section -->
+    <section id="booking" class="container mx-auto px-6 py-20 max-w-5xl">
+        <div class="text-center mb-10">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Schedule Your IT Security Consultation</h2>
+            <p class="text-slate-400 text-lg">Select a date and time slot below for a free 15-minute IT architecture audit.</p>
+        </div>
+
+        <!-- Master Calendar Container Card -->
+        <div class="bg-slate-950 rounded-2xl border border-slate-800 shadow-2xl overflow-hidden grid lg:grid-cols-12 min-h-[580px]">
+            
+            <!-- Left Side: Dynamic Calendar Grid -->
+            <div class="lg:col-span-7 p-6 md:p-8 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-slate-800">
+                <div>
+                    <!-- Calendar Header Navigation -->
+                    <div class="flex justify-between items-center mb-6">
+                        <button id="prev-month-btn" class="p-2 border border-slate-800 rounded-lg bg-slate-900 hover:border-cyan-500 hover:text-cyan-400 transition-all duration-200">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                        </button>
+                        <h3 id="calendar-title" class="text-xl font-bold text-slate-100 tracking-wide">June 2026</h3>
+                        <button id="next-month-btn" class="p-2 border border-slate-800 rounded-lg bg-slate-900 hover:border-cyan-500 hover:text-cyan-400 transition-all duration-200">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        </button>
+                    </div>
+
+                    <!-- Weekdays Row -->
+                    <div class="grid grid-cols-7 gap-1 text-center text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">
+                        <div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
+                    </div>
+
+                    <!-- Days Grid Container -->
+                    <div id="calendar-grid" class="grid grid-cols-7 gap-2">
+                        <!-- Filled Dynamically by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Calendar Legend -->
+                <div class="flex items-center gap-6 mt-8 pt-4 border-t border-slate-900 text-sm text-slate-400">
+                    <div class="flex items-center gap-2">
+                        <span class="w-3.5 h-3.5 rounded-full bg-cyan-500 shadow-sm shadow-cyan-500/50 block"></span>
+                        <span>Selected</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="w-3.5 h-3.5 rounded-full bg-slate-800 block"></span>
+                        <span>Available</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="w-3.5 h-3.5 rounded-full bg-slate-900 border border-slate-800/50 opacity-40 block"></span>
+                        <span>Past/Unavailable</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side: Live Scheduler Details & Client Form -->
+            <div id="booking-sidebar" class="lg:col-span-5 bg-slate-900/40 p-6 md:p-8 flex flex-col justify-center">
+                <!-- State 1: No Date Selected -->
+                <div id="state-empty" class="text-center py-10">
+                    <div class="text-slate-600 text-5xl mb-4">📅</div>
+                    <h4 class="text-lg font-bold text-slate-300 mb-2">Select an Available Date</h4>
+                    <p class="text-sm text-slate-500 max-w-xs mx-auto">Pick an active date on the calendar grid to unlock available consultation timeslots.</p>
+                </div>
+
+                <!-- State 2: Time Selection & Lead Intake Form -->
+                <div id="state-scheduler" class="hidden flex-col h-full justify-between">
+                    <div>
+                        <div class="mb-5">
+                            <span class="text-xs font-bold text-cyan-400 uppercase tracking-widest">Selected Date</span>
+                            <h4 id="selected-date-header" class="text-xl font-bold text-white mt-1">Thursday, June 18</h4>
+                        </div>
+
+                        <!-- Available Time Slots -->
+                        <div class="mb-6">
+                            <label class="block text-sm font-semibold text-slate-400 mb-3">Choose a Time Slot (GMT+1):</label>
+                            <div class="grid grid-cols-2 gap-2.5" id="time-slots-container">
+                                <!-- Generated Dynamically -->
+                            </div>
+                        </div>
+
+                        <!-- User Info Form Details -->
+                        <form id="appointment-form" class="space-y-4 border-t border-slate-800 pt-5">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-400 mb-1.5 uppercase tracking-wide">Your Name</label>
+                                <input type="text" id="client-name" required placeholder="Enter name" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-3 text-slate-200 placeholder-slate-600 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-400 mb-1.5 uppercase tracking-wide">Your Email</label>
+                                <input type="email" id="client-email" required placeholder="name@company.com" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-3 text-slate-200 placeholder-slate-600 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-400 mb-1.5 uppercase tracking-wide">Focus Goal</label>
+                                <input type="text" id="client-objective" placeholder="e.g. App Dev & Pentesting" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-3 text-slate-200 placeholder-slate-600 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition text-sm">
+                            </div>
+                            <button type="submit" class="w-full bg-cyan-500 hover:bg-cyan-600 text-slate-950 font-bold p-3.5 rounded-lg transition-all duration-200 tracking-wide shadow-lg shadow-cyan-500/20 text-sm mt-2">
+                                Confirm Security Consultation
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- State 3: Booking Confirmed -->
+                <div id="state-confirmed" class="hidden text-center py-12 px-4">
+                    <div class="w-16 h-16 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 rounded-full flex items-center justify-center text-3xl mx-auto mb-6">✓</div>
+                    <h3 class="text-2xl font-bold text-white mb-2">Booking Confirmed!</h3>
+                    <p class="text-sm text-slate-400 mb-6">We've reserved your 15-minute IT architecture consultation. An invitation has been sent.</p>
+                    
+                    <div class="bg-slate-950 border border-slate-800 p-4 rounded-xl text-left mb-8 max-w-sm mx-auto space-y-2">
+                        <p class="text-xs text-slate-500"><strong class="text-slate-400">Consultant:</strong> Senior Security Engineer</p>
+                        <p class="text-xs text-slate-500"><strong class="text-slate-400">Date:</strong> <span id="confirmed-date" class="text-cyan-400">-</span></p>
+                        <p class="text-xs text-slate-500"><strong class="text-slate-400">Time:</strong> <span id="confirmed-time" class="text-cyan-400">-</span></p>
+                    </div>
+
+                    <button id="book-another-btn" class="border border-slate-700 hover:border-cyan-400 text-slate-300 hover:text-white px-6 py-2.5 rounded-lg text-sm font-semibold transition-all">
+                        Book Another Session
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- General Quote Request Section (Formspree AJAX Integration) -->
+    <section id="contact" class="container mx-auto px-6 py-20 max-w-xl text-center border-t border-slate-800">
         <h2 class="text-3xl font-bold mb-4">Ready to Secure Your Growth?</h2>
         <p class="text-slate-400 mb-8">Drop your details below for a free 15-minute IT architecture consultation.</p>
         
@@ -82,10 +210,215 @@
         </form>
     </section>
 
+    <!-- Footer -->
+    <footer class="border-t border-slate-800 py-10 bg-slate-950 text-slate-500 text-center text-sm">
+        <div class="container mx-auto px-6">
+            <p>&copy; 2026 SECUREDEV / Wesit Solution. All rights reserved.</p>
+            <p class="mt-2 text-xs text-slate-600">Enterprise Applications & Rigorous Penetration Audits.</p>
+        </div>
+    </footer>
+
+    <!-- Formspree Scripts -->
     <script>
         window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
         formspree('initForm', { formElement: '#contact-form', formId: 'xnjyojgv' });
     </script>
     <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
+
+    <!-- Booking Calendar Controller Logic -->
+    <script>
+        // Configurable Live Booking Time Slots
+        const AVAILABLE_SLOTS = ["09:00 AM", "10:30 AM", "01:00 PM", "02:30 PM", "04:00 PM", "05:30 PM"];
+        const MONTH_NAMES = [
+            "January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+        ];
+        const WEEKDAYS_FULL = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+        // State Machine
+        let viewDate = new Date(); // Controls month currently rendered
+        let selectedDate = null;   // Active chosen Date object
+        let selectedTime = null;   // Active chosen time slot string
+
+        // DOM nodes
+        const calendarGrid = document.getElementById("calendar-grid");
+        const calendarTitle = document.getElementById("calendar-title");
+        const prevMonthBtn = document.getElementById("prev-month-btn");
+        const nextMonthBtn = document.getElementById("next-month-btn");
+
+        const stateEmpty = document.getElementById("state-empty");
+        const stateScheduler = document.getElementById("state-scheduler");
+        const stateConfirmed = document.getElementById("state-confirmed");
+
+        const selectedDateHeader = document.getElementById("selected-date-header");
+        const timeSlotsContainer = document.getElementById("time-slots-container");
+        const appointmentForm = document.getElementById("appointment-form");
+
+        const confirmedDateSpan = document.getElementById("confirmed-date");
+        const confirmedTimeSpan = document.getElementById("confirmed-time");
+        const bookAnotherBtn = document.getElementById("book-another-btn");
+
+        // Set up the Calendar Navigation and Form bindings
+        function initCalendar() {
+            renderCalendarGrid();
+            
+            prevMonthBtn.addEventListener("click", () => {
+                viewDate.setMonth(viewDate.getMonth() - 1);
+                renderCalendarGrid();
+            });
+
+            nextMonthBtn.addEventListener("click", () => {
+                viewDate.setMonth(viewDate.getMonth() + 1);
+                renderCalendarGrid();
+            });
+
+            appointmentForm.addEventListener("submit", handleFormSubmission);
+            bookAnotherBtn.addEventListener("click", resetBookingState);
+        }
+
+        // Render Month Grid
+        function renderCalendarGrid() {
+            const year = viewDate.getFullYear();
+            const month = viewDate.getMonth();
+
+            calendarTitle.textContent = `${MONTH_NAMES[month]} ${year}`;
+            calendarGrid.innerHTML = "";
+
+            // Calculate Grid offsets
+            const firstDayIndex = new Date(year, month, 1).getDay();
+            const totalDaysInMonth = new Date(year, month + 1, 0).getDate();
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+
+            // 1. Render empty grid cells (Month offset padding)
+            for (let i = 0; i < firstDayIndex; i++) {
+                const spacer = document.createElement("div");
+                spacer.className = "p-3";
+                calendarGrid.appendChild(spacer);
+            }
+
+            // 2. Generate and append clickable active month days
+            for (let day = 1; day <= totalDaysInMonth; day++) {
+                const cellDate = new Date(year, month, day);
+                const isPast = cellDate < today;
+                
+                const isSelected = selectedDate &&
+                                   selectedDate.getDate() === day &&
+                                   selectedDate.getMonth() === month &&
+                                   selectedDate.getFullYear() === year;
+
+                const dayButton = document.createElement("button");
+                dayButton.type = "button";
+                dayButton.textContent = day;
+
+                let baseStyle = "p-3 rounded-lg text-center font-bold text-sm transition-all duration-200 relative ";
+                
+                if (isPast) {
+                    baseStyle += "bg-slate-950/20 text-slate-700 cursor-not-allowed opacity-40";
+                    dayButton.disabled = true;
+                } else if (isSelected) {
+                    baseStyle += "bg-cyan-500 text-slate-950 shadow-lg shadow-cyan-500/30 scale-105 z-10";
+                } else {
+                    baseStyle += "bg-slate-900 border border-slate-800 hover:border-cyan-500/50 hover:bg-slate-800 text-slate-300 cursor-pointer";
+                }
+
+                dayButton.className = baseStyle;
+
+                if (!isPast) {
+                    dayButton.addEventListener("click", () => selectDateHandler(year, month, day));
+                }
+
+                calendarGrid.appendChild(dayButton);
+            }
+        }
+
+        // Select Date Handler
+        function selectDateHandler(year, month, day) {
+            selectedDate = new Date(year, month, day);
+            selectedTime = null; // Reset slot when picking a new date
+
+            renderCalendarGrid();
+
+            stateEmpty.classList.add("hidden");
+            stateConfirmed.classList.add("hidden");
+            stateScheduler.classList.remove("hidden");
+            stateScheduler.classList.add("flex");
+
+            // Display formatted date
+            const dayOfWeek = WEEKDAYS_FULL[selectedDate.getDay()];
+            selectedDateHeader.textContent = `${dayOfWeek}, ${MONTH_NAMES[month]} ${day}`;
+
+            renderTimeSlots();
+        }
+
+        // Display Configured Time Slots
+        function renderTimeSlots() {
+            timeSlotsContainer.innerHTML = "";
+
+            AVAILABLE_SLOTS.forEach(time => {
+                const timeButton = document.createElement("button");
+                timeButton.type = "button";
+                timeButton.textContent = time;
+
+                const isTimeSelected = (selectedTime === time);
+
+                let slotStyle = "p-3 rounded-lg text-sm font-semibold border transition-all duration-150 text-center cursor-pointer ";
+                if (isTimeSelected) {
+                    slotStyle += "bg-cyan-500/10 border-cyan-500 text-cyan-400 font-bold";
+                } else {
+                    slotStyle += "bg-slate-950 border-slate-800 hover:border-cyan-500/50 hover:bg-slate-900 text-slate-400";
+                }
+
+                timeButton.className = slotStyle;
+                timeButton.addEventListener("click", () => {
+                    selectedTime = time;
+                    renderTimeSlots();
+                });
+
+                timeSlotsContainer.appendChild(timeButton);
+            });
+        }
+
+        // Handle Booking Submission
+        function handleFormSubmission(event) {
+            event.preventDefault();
+
+            if (!selectedDate || !selectedTime) {
+                return;
+            }
+
+            // Read client input values
+            const clientName = document.getElementById("client-name").value;
+            const clientEmail = document.getElementById("client-email").value;
+            const clientGoal = document.getElementById("client-objective").value;
+
+            // Formulate confirmation text
+            const formatSelectedDate = `${WEEKDAYS_FULL[selectedDate.getDay()]}, ${MONTH_NAMES[selectedDate.getMonth()]} ${selectedDate.getDate()}, ${selectedDate.getFullYear()}`;
+            confirmedDateSpan.textContent = formatSelectedDate;
+            confirmedTimeSpan.textContent = selectedTime;
+
+            // Display Confirmed State Card
+            stateScheduler.classList.remove("flex");
+            stateScheduler.classList.add("hidden");
+            stateConfirmed.classList.remove("hidden");
+        }
+
+        // Reset App States
+        function resetBookingState() {
+            selectedDate = null;
+            selectedTime = null;
+            appointmentForm.reset();
+            
+            stateConfirmed.classList.add("hidden");
+            stateScheduler.classList.add("hidden");
+            stateScheduler.classList.remove("flex");
+            stateEmpty.classList.remove("hidden");
+
+            renderCalendarGrid();
+        }
+
+        // Initialize Booking Script on page render
+        window.addEventListener("DOMContentLoaded", initCalendar);
+    </script>
 </body>
 </html>
