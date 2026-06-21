@@ -12,8 +12,11 @@
     <!-- Navigation -->
     <nav class="container mx-auto p-6 flex justify-between items-center border-b border-slate-800">
         <a href="#top" class="flex items-center text-cyan-400 font-bold tracking-wider">
-            <img src="logo.png" alt="Wesit Solution logo" class="h-14 w-auto rounded-md object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-            <span class="hidden text-2xl font-bold tracking-wider text-cyan-400">SECURE<span class="text-white">DEV</span></span>
+            <!-- Smooth SVG Fallback if logo.png doesn't load -->
+            <img src="logo.png" alt="Wesit Solution logo" class="h-14 w-auto rounded-md object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <span class="hidden text-2xl font-bold tracking-wider text-cyan-400 items-center gap-1">
+                SECURE<span class="text-white">DEV</span>
+            </span>
         </a>
         <div class="space-x-6">
             <a href="#services" class="hover:text-cyan-400 transition">Services</a>
@@ -79,11 +82,11 @@
                 <div>
                     <!-- Calendar Header Navigation -->
                     <div class="flex justify-between items-center mb-6">
-                        <button id="prev-month-btn" class="p-2 border border-slate-800 rounded-lg bg-slate-900 hover:border-cyan-500 hover:text-cyan-400 transition-all duration-200">
+                        <button id="prev-month-btn" class="p-2 border border-slate-800 rounded-lg bg-slate-900 hover:border-cyan-500 hover:text-cyan-400 transition-all duration-200 cursor-pointer">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
                         </button>
                         <h3 id="calendar-title" class="text-xl font-bold text-slate-100 tracking-wide">June 2026</h3>
-                        <button id="next-month-btn" class="p-2 border border-slate-800 rounded-lg bg-slate-900 hover:border-cyan-500 hover:text-cyan-400 transition-all duration-200">
+                        <button id="next-month-btn" class="p-2 border border-slate-800 rounded-lg bg-slate-900 hover:border-cyan-500 hover:text-cyan-400 transition-all duration-200 cursor-pointer">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                         </button>
                     </div>
@@ -100,7 +103,7 @@
                 </div>
 
                 <!-- Calendar Legend -->
-                <div class="flex items-center gap-6 mt-8 pt-4 border-t border-slate-900 text-sm text-slate-400">
+                <div class="flex flex-wrap items-center gap-x-6 gap-y-2 mt-8 pt-4 border-t border-slate-900 text-xs sm:text-sm text-slate-400">
                     <div class="flex items-center gap-2">
                         <span class="w-3.5 h-3.5 rounded-full bg-cyan-500 shadow-sm shadow-cyan-500/50 block"></span>
                         <span>Selected</span>
@@ -108,6 +111,10 @@
                     <div class="flex items-center gap-2">
                         <span class="w-3.5 h-3.5 rounded-full bg-slate-800 block"></span>
                         <span>Available</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="w-3.5 h-3.5 rounded-full bg-red-950 border border-red-900 block"></span>
+                        <span class="text-red-400 font-medium">Fully Booked</span>
                     </div>
                     <div class="flex items-center gap-2">
                         <span class="w-3.5 h-3.5 rounded-full bg-slate-900 border border-slate-800/50 opacity-40 block"></span>
@@ -130,12 +137,12 @@
                     <div>
                         <div class="mb-5">
                             <span class="text-xs font-bold text-cyan-400 uppercase tracking-widest">Selected Date</span>
-                            <h4 id="selected-date-header" class="text-xl font-bold text-white mt-1">Thursday, June 18</h4>
+                            <h4 id="selected-date-header" class="text-xl font-bold text-white mt-1">-</h4>
                         </div>
 
                         <!-- Available Time Slots -->
                         <div class="mb-6">
-                            <label class="block text-sm font-semibold text-slate-400 mb-3">Choose a Time Slot (GMT+1):</label>
+                            <label class="block text-sm font-semibold text-slate-400 mb-3">Choose an Available Time Slot (GMT+1):</label>
                             <div class="grid grid-cols-2 gap-2.5" id="time-slots-container">
                                 <!-- Generated Dynamically -->
                             </div>
@@ -155,7 +162,7 @@
                                 <label class="block text-xs font-semibold text-slate-400 mb-1.5 uppercase tracking-wide">Focus Goal</label>
                                 <input type="text" id="client-objective" placeholder="e.g. App Dev & Pentesting" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-3 text-slate-200 placeholder-slate-600 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition text-sm">
                             </div>
-                            <button type="submit" class="w-full bg-cyan-500 hover:bg-cyan-600 text-slate-950 font-bold p-3.5 rounded-lg transition-all duration-200 tracking-wide shadow-lg shadow-cyan-500/20 text-sm mt-2">
+                            <button type="submit" id="appointment-submit-btn" class="w-full bg-cyan-500 hover:bg-cyan-600 text-slate-950 font-bold p-3.5 rounded-lg transition-all duration-200 tracking-wide shadow-lg shadow-cyan-500/20 text-sm mt-2 cursor-pointer">
                                 Confirm Security Consultation
                             </button>
                         </form>
@@ -174,7 +181,7 @@
                         <p class="text-xs text-slate-500"><strong class="text-slate-400">Time:</strong> <span id="confirmed-time" class="text-cyan-400">-</span></p>
                     </div>
 
-                    <button id="book-another-btn" class="border border-slate-700 hover:border-cyan-400 text-slate-300 hover:text-white px-6 py-2.5 rounded-lg text-sm font-semibold transition-all">
+                    <button id="book-another-btn" class="border border-slate-700 hover:border-cyan-400 text-slate-300 hover:text-white px-6 py-2.5 rounded-lg text-sm font-semibold transition-all cursor-pointer">
                         Book Another Session
                     </button>
                 </div>
@@ -227,7 +234,7 @@
 
     <!-- Booking Calendar Controller Logic -->
     <script>
-        // Configurable Live Booking Time Slots
+        // Configurable Live Booking Time Slots (6 available slots per day)
         const AVAILABLE_SLOTS = ["09:00 AM", "10:30 AM", "01:00 PM", "02:30 PM", "04:00 PM", "05:30 PM"];
         const MONTH_NAMES = [
             "January", "February", "March", "April", "May", "June",
@@ -239,6 +246,9 @@
         let viewDate = new Date(); // Controls month currently rendered
         let selectedDate = null;   // Active chosen Date object
         let selectedTime = null;   // Active chosen time slot string
+
+        // In-memory Database to store booked appointments grouped by date keys (YYYY-MM-DD)
+        const bookedSlotsDb = {};
 
         // DOM nodes
         const calendarGrid = document.getElementById("calendar-grid");
@@ -253,13 +263,39 @@
         const selectedDateHeader = document.getElementById("selected-date-header");
         const timeSlotsContainer = document.getElementById("time-slots-container");
         const appointmentForm = document.getElementById("appointment-form");
+        const appointmentSubmitBtn = document.getElementById("appointment-submit-btn");
 
         const confirmedDateSpan = document.getElementById("confirmed-date");
         const confirmedTimeSpan = document.getElementById("confirmed-time");
         const bookAnotherBtn = document.getElementById("book-another-btn");
 
+        // Helper: Convert Date object to a standardized string key (YYYY-MM-DD)
+        function getDateKey(date) {
+            if (!date) return "";
+            const y = date.getFullYear();
+            const m = String(date.getMonth() + 1).padStart(2, '0');
+            const d = String(date.getDate()).padStart(2, '0');
+            return `${y}-${m}-${d}`;
+        }
+
+        // Pre-seed mock database slots to demonstrate features immediately:
+        function preseedMockData() {
+            // 1. Fully book a day next week (5 days from now)
+            const fullDay = new Date();
+            fullDay.setDate(fullDay.getDate() + 5);
+            const fullDayKey = getDateKey(fullDay);
+            bookedSlotsDb[fullDayKey] = [...AVAILABLE_SLOTS]; // All slots booked
+
+            // 2. Partially book tomorrow (2 slots occupied)
+            const partialDay = new Date();
+            partialDay.setDate(partialDay.getDate() + 1);
+            const partialDayKey = getDateKey(partialDay);
+            bookedSlotsDb[partialDayKey] = ["09:00 AM", "01:00 PM"];
+        }
+
         // Set up the Calendar Navigation and Form bindings
         function initCalendar() {
+            preseedMockData();
             renderCalendarGrid();
             
             prevMonthBtn.addEventListener("click", () => {
@@ -301,6 +337,11 @@
             for (let day = 1; day <= totalDaysInMonth; day++) {
                 const cellDate = new Date(year, month, day);
                 const isPast = cellDate < today;
+                const cellDateKey = getDateKey(cellDate);
+                
+                // Track if day is fully booked out (number of bookings matches or exceeds total slots)
+                const bookedSlots = bookedSlotsDb[cellDateKey] || [];
+                const isFullyBooked = bookedSlots.length >= AVAILABLE_SLOTS.length;
                 
                 const isSelected = selectedDate &&
                                    selectedDate.getDate() === day &&
@@ -316,15 +357,19 @@
                 if (isPast) {
                     baseStyle += "bg-slate-950/20 text-slate-700 cursor-not-allowed opacity-40";
                     dayButton.disabled = true;
+                } else if (isFullyBooked) {
+                    baseStyle += "bg-red-950/20 border border-red-900/40 text-red-400 cursor-not-allowed opacity-85 line-through";
+                    dayButton.disabled = true;
+                    dayButton.title = "This day is fully booked";
                 } else if (isSelected) {
-                    baseStyle += "bg-cyan-500 text-slate-950 shadow-lg shadow-cyan-500/30 scale-105 z-10";
+                    baseStyle += "bg-cyan-500 text-slate-950 shadow-lg shadow-cyan-500/30 scale-105 z-10 cursor-pointer";
                 } else {
                     baseStyle += "bg-slate-900 border border-slate-800 hover:border-cyan-500/50 hover:bg-slate-800 text-slate-300 cursor-pointer";
                 }
 
                 dayButton.className = baseStyle;
 
-                if (!isPast) {
+                if (!isPast && !isFullyBooked) {
                     dayButton.addEventListener("click", () => selectDateHandler(year, month, day));
                 }
 
@@ -354,29 +399,52 @@
         // Display Configured Time Slots
         function renderTimeSlots() {
             timeSlotsContainer.innerHTML = "";
+            const dateKey = getDateKey(selectedDate);
+            const bookedForThisDate = bookedSlotsDb[dateKey] || [];
 
             AVAILABLE_SLOTS.forEach(time => {
                 const timeButton = document.createElement("button");
                 timeButton.type = "button";
                 timeButton.textContent = time;
 
+                const isAlreadyBooked = bookedForThisDate.includes(time);
                 const isTimeSelected = (selectedTime === time);
 
-                let slotStyle = "p-3 rounded-lg text-sm font-semibold border transition-all duration-150 text-center cursor-pointer ";
-                if (isTimeSelected) {
-                    slotStyle += "bg-cyan-500/10 border-cyan-500 text-cyan-400 font-bold";
+                let slotStyle = "p-3 rounded-lg text-sm font-semibold border transition-all duration-150 text-center ";
+                
+                if (isAlreadyBooked) {
+                    slotStyle += "bg-slate-950 border-slate-950 text-slate-600 line-through cursor-not-allowed";
+                    timeButton.disabled = true;
+                } else if (isTimeSelected) {
+                    slotStyle += "bg-cyan-500/10 border-cyan-500 text-cyan-400 font-bold cursor-pointer";
                 } else {
-                    slotStyle += "bg-slate-950 border-slate-800 hover:border-cyan-500/50 hover:bg-slate-900 text-slate-400";
+                    slotStyle += "bg-slate-950 border-slate-800 hover:border-cyan-500/50 hover:bg-slate-900 text-slate-400 cursor-pointer";
                 }
 
                 timeButton.className = slotStyle;
-                timeButton.addEventListener("click", () => {
-                    selectedTime = time;
-                    renderTimeSlots();
-                });
+                
+                if (!isAlreadyBooked) {
+                    timeButton.addEventListener("click", () => {
+                        selectedTime = time;
+                        renderTimeSlots();
+                    });
+                }
 
                 timeSlotsContainer.appendChild(timeButton);
             });
+
+            // Adjust submit button state based on selected time
+            updateSubmitButtonState();
+        }
+
+        function updateSubmitButtonState() {
+            if (!selectedTime) {
+                appointmentSubmitBtn.disabled = true;
+                appointmentSubmitBtn.className = "w-full bg-slate-800 text-slate-500 font-bold p-3.5 rounded-lg cursor-not-allowed text-sm mt-2";
+            } else {
+                appointmentSubmitBtn.disabled = false;
+                appointmentSubmitBtn.className = "w-full bg-cyan-500 hover:bg-cyan-600 text-slate-950 font-bold p-3.5 rounded-lg transition-all duration-200 tracking-wide shadow-lg shadow-cyan-500/20 text-sm mt-2 cursor-pointer";
+            }
         }
 
         // Handle Booking Submission
@@ -387,13 +455,20 @@
                 return;
             }
 
+            // Save the booked slot to the dynamic state map
+            const dateKey = getDateKey(selectedDate);
+            if (!bookedSlotsDb[dateKey]) {
+                bookedSlotsDb[dateKey] = [];
+            }
+            bookedSlotsDb[dateKey].push(selectedTime);
+
             // Read client input values
             const clientName = document.getElementById("client-name").value;
             const clientEmail = document.getElementById("client-email").value;
             const clientGoal = document.getElementById("client-objective").value;
 
             // Formulate confirmation text
-            const formatSelectedDate = `${WEEKDAYS_FULL[selectedDate.getDay()]}, ${MONTH_NAMES[selectedDate.getMonth()]} ${selectedDate.getDate()}, ${selectedDate.getFullYear()}`;
+            const formatSelectedDate = `${WEEKDAYS_FULL[selectedDate.getDay()]} - ${MONTH_NAMES[selectedDate.getMonth()]} ${selectedDate.getDate()}, ${selectedDate.getFullYear()}`;
             confirmedDateSpan.textContent = formatSelectedDate;
             confirmedTimeSpan.textContent = selectedTime;
 
